@@ -1,0 +1,8 @@
+tensorflow
+tensorflow-addons
+numpy
+scikit-image
+matplotlib
+imgaug
+Pillow
+tqdm
