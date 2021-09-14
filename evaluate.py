@@ -17,7 +17,7 @@ def evaluate(
     model: BaseModel, data_loader: BaseDataLoader, weights: str, visualize: bool = False
 ):
     model.compile_model()
-    model.load(weights)
+    # model.load(weights)
 
     # compute MAE
     metrics_val = Metrics(data_loader, model=model, dataset_path=PATHS.TEST_PATH)
@@ -49,5 +49,7 @@ if __name__ == "__main__":
 
     input_shape = (img_size, img_size, 3)
     data_loader = TripletDataLoader(input_shape=input_shape)
-    model = ResNet50V2Model(input_shape=input_shape, imagenet=False)
+    model = ResNet50V2Model(
+        input_shape=input_shape, imagenet=False, weights_path=args.weights
+    )
     evaluate(model, data_loader, weights=args.weights, visualize=args.visualize)

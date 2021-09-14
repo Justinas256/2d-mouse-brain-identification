@@ -18,8 +18,8 @@ class TripletDataLoader(BaseDataLoader):
         train_file_names = list(self.train_images.keys())
 
         imgs_per_class = 2
-        atlas_train_steps = self.batch_size * 0.25 if self.augmentation else 0
-        brain_train_steps = self.batch_size * 0.75 if self.augmentation else 1
+        atlas_train_steps = int(self.batch_size * 0.25 if self.augmentation else 0)
+        brain_train_steps = int(self.batch_size * 0.75 if self.augmentation else 1)
 
         while True:
             images = []
@@ -39,7 +39,6 @@ class TripletDataLoader(BaseDataLoader):
                 atlas_no = random.choice(atlas_file_names)
                 for u in range(imgs_per_class):
                     labels.append(atlas_no)
-                    images.append(self.augment_data([self.atlas_images[atlas_no]])[0])
                     images.append(self.augment_data([self.atlas_images[atlas_no]])[0])
 
             yield np.array(images), np.array(labels)
