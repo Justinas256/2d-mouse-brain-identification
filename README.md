@@ -1,5 +1,18 @@
 ## Identifying 2D brain slices in a 2D reference atlas using Siamese Networks
 
+This repository contains code for the following paper [[arXiv]](https://arxiv.org/abs/2109.06662). If you found it useful in your research, please consider citing us:
+
+```
+@misc{antanavicius2021identifying,
+      title={Identifying partial mouse brain microscopy images from Allen reference atlas using a contrastively learned semantic space}, 
+      author={Justinas Antanavicius and Roberto Leiras and Raghavendra Selvan},
+      year={2021},
+      eprint={2109.06662},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}
+```
+
 ## Dataset Directory Structure
         
 	|-- data
@@ -50,4 +63,4 @@ optional arguments:
 ## Limitations
 
  It is assumed that no more than one training example for each atlas plate is available. 
-To include more training examples, `data_loader.py` has to be slightly modified. 
+To include more training examples, `data_loader.py` has to be slightly modified.

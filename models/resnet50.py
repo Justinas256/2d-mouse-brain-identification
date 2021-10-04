@@ -4,7 +4,13 @@ from tensorflow.keras.layers import Lambda, Input, GlobalAveragePooling2D
 
 
 class ResNet50V2Model(BaseModel):
-    def __init__(self, input_shape, freeze: bool = False, imagenet: bool = True, weights_path: str = None):
+    def __init__(
+        self,
+        input_shape,
+        freeze: bool = False,
+        imagenet: bool = True,
+        weights_path: str = None,
+    ):
         super().__init__(input_shape, freeze, weights_path)
         self.imagenet = imagenet
 
@@ -24,9 +30,6 @@ class ResNet50V2Model(BaseModel):
             weights="imagenet" if self.imagenet else None,
             pooling="avg",
         )
-        # freeze layers till conv5
-        if self.freeze:
-            self._freeze_layers(model)
         return model
 
     def _freeze_layers(self, model):

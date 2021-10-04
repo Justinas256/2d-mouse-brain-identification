@@ -67,10 +67,10 @@ class BaseModel(object):
         model = Model(inputs=inputs, outputs=x)
 
         if self.weights_path:
-            model.trainable = True
             model.load_weights(self.weights_path)
-            if self.freeze:
-                self._freeze_layers(backbone)
+
+        if self.freeze:
+            self._freeze_layers(model)
 
         return model
 
