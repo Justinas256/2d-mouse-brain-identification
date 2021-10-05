@@ -1,6 +1,6 @@
 ## Identifying 2D brain slices in a 2D reference atlas using Siamese Networks
 
-This repository contains code for the following paper [[arXiv]](https://arxiv.org/abs/2109.06662). If you found it useful in your research, please consider citing us:
+This repository contains code for the following paper [[arXiv]](https://arxiv.org/abs/2109.06662). If you find this code useful in your research, please consider citing us:
 
 ```
 @misc{antanavicius2021identifying,
