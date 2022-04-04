@@ -19,4 +19,4 @@ venv.bak/
 output/
 output_imagenet/
 output_augmented/
-data/
+# data/
