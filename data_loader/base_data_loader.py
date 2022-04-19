@@ -30,7 +30,7 @@ class BaseDataLoader(object):
 
     def _load_training_dataset(self):
         print("Loading training dataset...")
-        self.train_images = self._get_images(PATHS.TRAIN_PATH)
+        self.train_images = self._get_images_list(PATHS.TRAIN_PATH)
         total_images = len(list(self.train_images.keys()))
         if total_images > 0:
             print("Loaded. Number of images: ", total_images)
@@ -48,5 +48,25 @@ class BaseDataLoader(object):
         for path in get_image_paths(dir):
             slice_no = os.path.basename(path).split(".")[0]
             img_dict[slice_no] = load_image(path, input_shape=self.input_shape)
+
+        return img_dict
+
+
+    def _get_images_list(self, dir: str):
+        """
+        Load and process (pad, resize) images
+        :param dir: Path to the directory where images are located
+        :return: dict[slice_number] = [images]
+        """
+        img_dict = {}
+
+        for path in get_image_paths(dir):
+            slice_no = os.path.basename(path).split('.')[0]
+            if '_' in slice_no:
+                slice_no = slice_no.split('_')[0]
+            if slice_no in img_dict:
+                img_dict[slice_no].append(load_image(path, input_shape=self.input_shape))
+            else:
+                img_dict[slice_no] = [load_image(path, input_shape=self.input_shape)]
 
         return img_dict

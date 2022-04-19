@@ -25,7 +25,7 @@ usage: train.py [-h] image_size
 Train Siamese Networks with triplet semi-hard loss
 
 positional arguments:
-  image_size  The size of images (256 or 1024)
+  image_size  The size of images (224, 448 or 1024)
 
 optional arguments:
   -h, --help  show this help message and exit
@@ -51,10 +51,6 @@ optional arguments:
   -h, --help       show this help message and exit
   -v, --visualize  Visualize predicted atlas plates
 ```
-## Limitations
-
- It is assumed that no more than one training example for each atlas plate is available. 
-To include more training examples, `data_loader.py` has to be slightly modified.
 
 ## Citation
 If you find this code useful in your research, please consider citing us:

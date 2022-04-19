@@ -70,7 +70,7 @@ class BaseModel(object):
             model.load_weights(self.weights_path)
 
         if self.freeze:
-            self._freeze_layers(model)
+            self._freeze_layers(backbone)
 
         return model
 

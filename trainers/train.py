@@ -89,13 +89,13 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description="Train Siamese Networks with triplet semi-hard loss"
     )
-    parser.add_argument("image_size", help="The size of images (256 or 1024)")
+    parser.add_argument("image_size", help="The size of images (224 or 1024)")
     args = parser.parse_args()
 
     try:
         img_size = int(args.image_size)
-        if img_size < 256:
-            raise Exception("Image size should be bigger than 256")
+        if img_size < 224:
+            raise Exception("Image size should be bigger than 224")
     except ValueError:
         raise Exception("Provide a correct image size")
 
@@ -103,8 +103,8 @@ if __name__ == "__main__":
 
     input_shape = (img_size, img_size, 3)
     data_loader = TripletDataLoader(
-        input_shape=input_shape, augmentation=True, batch_size=8
+        input_shape=input_shape, augmentation=True, batch_size=16
     )
-    model = ResNet50V2Model(input_shape=input_shape, freeze=True, imagenet=True)
+    model = ResNet50V2Model(input_shape=input_shape, freeze=False, imagenet=True)
     trainer = MainTrain(model=model, data_loader=data_loader)
     trainer.train()

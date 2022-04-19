@@ -28,7 +28,7 @@ class TripletDataLoader(BaseDataLoader):
             for i in range(brain_train_steps):
                 brain_slice_no = random.choice(train_file_names)
                 labels.append(brain_slice_no)
-                images.append(self.train_images[brain_slice_no])
+                images.append(random.choice(self.train_images[brain_slice_no]))
                 for u in range(imgs_per_class - 1):
                     labels.append(brain_slice_no)
                     images.append(

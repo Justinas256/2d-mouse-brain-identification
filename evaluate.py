@@ -30,7 +30,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description="Evaluate trained ResNet50v2 on the test dataset"
     )
-    parser.add_argument("image_size", help="The size of images (256 or 1024)")
+    parser.add_argument("image_size", help="The size of images (224 or 1024)")
     parser.add_argument("weights", help="Path to model weights")
     parser.add_argument(
         "-v",
@@ -42,8 +42,8 @@ if __name__ == "__main__":
 
     try:
         img_size = int(args.image_size)
-        if img_size < 256:
-            raise Exception("Image size should be bigger than 256")
+        if img_size < 224:
+            raise Exception("Image size should be bigger than 224")
     except ValueError:
         raise Exception("Provide a correct image size")
 
